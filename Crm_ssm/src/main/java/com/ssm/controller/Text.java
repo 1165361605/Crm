@@ -8,6 +8,6 @@ public class Text {
 
     @RequestMapping("index")
     public String index(){
-        return "index";
+        return "/index.jsp";
     }
 }

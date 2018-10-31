@@ -9,8 +9,5 @@
         <module name="Crm_ssm" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="Crm_ssm" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
 </project>
