@@ -21,9 +21,13 @@ public class loginController {
     @RequestMapping("login/check")
     public String login(Admin admin, Model model){
         boolean b = loginService.login(admin);
+        Integer usertype = admin.getUsertype();
         if (b)
-            return "";//重定向登陆成功界面
-        else
-            return "";
+            if (usertype==0) return "redirect:/admin" ;//重定向登陆成功界面,重定向到管理员页面
+            if (usertype==1) return "redirect:/register" ;//重定向登陆成功界面,重定向到管理员页面
+        else {
+            model.addAttribute();
+            return "login";
+            }
     }
 }
