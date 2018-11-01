@@ -89,6 +89,12 @@
     from users
     where UserID = #{userid,jdbcType=INTEGER}
   </select>
+  <select id="selectByUserName" resultMap="BaseResultMap" parameterType="String" >
+    select
+    <include refid="Base_Column_List" />
+    from users
+    where UserName = #{UserName,jdbcType=VARCHAR}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from users
     where UserID = #{userid,jdbcType=INTEGER}
