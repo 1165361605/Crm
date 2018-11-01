@@ -210,10 +210,10 @@
 			<!-- /.row -->
 			<div class="panel panel-default">
 				<div class="panel-body">
-					<form class="form-inline" action="${pageContext.request.contextPath }/customer/list.action" method="post">
+					<form class="form-inline" action="${pageContext.request.contextPath }/customer/selectlist.html" method="post">
 						<div class="form-group">
 							<label for="customerName">客户名称</label> 
-							<input type="text" class="form-control" id="customerName" value="${custName }" name="custName">
+							<input type="text" class="form-control" id="customerName" value="${UserName}" name="UserName">
 						</div>
 						<button type="submit" class="btn btn-primary">查询</button>
 					</form>
@@ -229,34 +229,30 @@
 								<tr>
 									<th>ID</th>
 									<th>客户名称</th>
-									<th>客户来源</th>
-									<th>客户所属行业</th>
-									<th>客户级别</th>
-									<th>固定电话</th>
+									<th>性别</th>
+									<th>地址</th>
 									<th>手机</th>
 									<th>操作</th>
 								</tr>
 							</thead>
 							<tbody>
-								<c:forEach items="${page.rows}" var="row">
+								<c:forEach items="${list}" var="row">
 									<tr>
-										<td>${row.cust_id}</td>
-										<td>${row.cust_name}</td>
-										<td>${row.cust_source}</td>
-										<td>${row.cust_industry}</td>
-										<td>${row.cust_level}</td>
-										<td>${row.cust_phone}</td>
-										<td>${row.cust_mobile}</td>
+										<td>${row.userid}</td>
+										<td>${row.username}</td>
+										<td>${row.usergender}</td>
+										<td>${row.useraddress}</td>
+										<td>${row.usertel}</td>
 										<td>
-											<a href="#" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#customerEditDialog" onclick="editCustomer(${row.cust_id})">修改</a>
-											<a href="#" class="btn btn-danger btn-xs" onclick="deleteCustomer(${row.cust_id})">删除</a>
+											<a href="#" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#customerEditDialog" onclick="editCustomer(${row.userid})">修改</a>
+											<a href="#" class="btn btn-danger btn-xs" onclick="deleteCustomer(${row.userid})">删除</a>
 										</td>
 									</tr>
 								</c:forEach>
 							</tbody>
 						</table>
 						<div class="col-md-12 text-right">
-							<itheima:page url="${pageContext.request.contextPath }/customer/list.action" />
+							<itheima:page url="${pageContext.request.contextPath }/customer/list.html" />
 						</div>
 						<!-- /.panel-body -->
 					</div>
