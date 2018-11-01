@@ -1,5 +1,6 @@
 package com.ssm.mapper;
 
+import com.ssm.pojo.QueryVo;
 import com.ssm.pojo.Users;
 import com.ssm.pojo.UsersExample;
 import org.apache.ibatis.annotations.Param;
@@ -30,4 +31,8 @@ public interface UsersMapper {
     int updateByPrimaryKey(Users record);
 
     Users selectByUserName(String username);
+    //总条数
+    Integer customerCountByQueryVo(QueryVo vo);
+    //结果集
+    List<Users> selectCustomerListByQueryVo(QueryVo vo);
 }

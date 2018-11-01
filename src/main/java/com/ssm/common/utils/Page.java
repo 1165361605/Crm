@@ -35,7 +35,5 @@ public class Page<T>{ //也可以不设置占位符<T>，，直接在List<>中�
 	public void setRows(List<T> rows) {
 		this.rows = rows;
 	}
-    
-	
-    
+
 }

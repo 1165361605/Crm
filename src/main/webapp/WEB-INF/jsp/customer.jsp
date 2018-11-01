@@ -212,8 +212,16 @@
 				<div class="panel-body">
 					<form class="form-inline" action="${pageContext.request.contextPath }/customer/selectlist.html" method="post">
 						<div class="form-group">
-							<label for="customerName">客户名称</label> 
-							<input type="text" class="form-control" id="customerName" value="${UserName}" name="UserName">
+							<label for="username">客户名称</label>
+							<input type="text" class="form-control" id="username" value="${username}" name="username">
+						</div>
+						<div class="form-group">
+							<label for="usergender">性别</label>
+							<select	class="form-control" id="usergender" placeholder="性别" name="usergender">
+								<option value="">--请选择--</option>
+									<option value="1">男</option>
+									<option value="2">女</option>
+							</select>
 						</div>
 						<button type="submit" class="btn btn-primary">查询</button>
 					</form>
@@ -236,7 +244,7 @@
 								</tr>
 							</thead>
 							<tbody>
-								<c:forEach items="${list}" var="row">
+								<c:forEach items="${page.rows}" var="row">
 									<tr>
 										<td>${row.userid}</td>
 										<td>${row.username}</td>
@@ -252,7 +260,7 @@
 							</tbody>
 						</table>
 						<div class="col-md-12 text-right">
-							<itheima:page url="${pageContext.request.contextPath }/customer/list.html" />
+							<itheima:page url="${pageContext.request.contextPath }/customer/selectlist.html" />
 						</div>
 						<!-- /.panel-body -->
 					</div>
@@ -277,76 +285,32 @@
 				</div>
 				<div class="modal-body">
 					<form class="form-horizontal" id="edit_customer_form">
-						<input type="hidden" id="edit_cust_id" name="cust_id"/>
+						<input type="hidden" id="edit_userid" name="userid"/>
 						<div class="form-group">
-							<label for="edit_customerName" class="col-sm-2 control-label">客户名称</label>
+							<label for="edit_username" class="col-sm-2 control-label">客户名称</label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control" id="edit_customerName" placeholder="客户名称" name="cust_name">
+								<input type="text" class="form-control" id="edit_username" placeholder="客户名称" name="username">
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="edit_customerFrom" style="float:left;padding:7px 15px 0 27px;">客户来源</label> 
+							<label for="edit_usergender" class="col-sm-2 control-label">性别</label>
 							<div class="col-sm-10">
-								<select	class="form-control" id="edit_customerFrom" placeholder="客户来源" name="cust_source">
-									<option value="">--请选择--</option>
-									<c:forEach items="${fromType}" var="item">
-										<option value="${item.dict_id}"<c:if test="${item.dict_id == custSource}"> selected</c:if>>${item.dict_item_name }</option>
-									</c:forEach>
-								</select>
+								<input type="text" class="form-control" id="edit_usergender" placeholder="性别" name="usergender">
 							</div>
 						</div>
+
 						<div class="form-group">
-							<label for="edit_custIndustry" style="float:left;padding:7px 15px 0 27px;">所属行业</label>
-							<div class="col-sm-10"> 
-								<select	class="form-control" id="edit_custIndustry"  name="cust_industry">
-									<option value="">--请选择--</option>
-									<c:forEach items="${industryType}" var="item">
-										<option value="${item.dict_id}"<c:if test="${item.dict_id == custIndustry}"> selected</c:if>>${item.dict_item_name }</option>
-									</c:forEach>
-								</select>
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="edit_custLevel" style="float:left;padding:7px 15px 0 27px;">客户级别</label>
+							<label for="edit_useraddress" class="col-sm-2 control-label">联系地址</label>
 							<div class="col-sm-10">
-								<select	class="form-control" id="edit_custLevel" name="cust_level">
-									<option value="">--请选择--</option>
-									<c:forEach items="${levelType}" var="item">
-										<option value="${item.dict_id}"<c:if test="${item.dict_id == custLevel}"> selected</c:if>>${item.dict_item_name }</option>
-									</c:forEach>
-								</select>
+								<input type="text" class="form-control" id="edit_useraddress" placeholder="联系地址" name="useraddress">
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="edit_linkMan" class="col-sm-2 control-label">联系人</label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" id="edit_linkMan" placeholder="联系人" name="cust_linkman">
-							</div>
+						<label for="edit_usertel" class="col-sm-2 control-label">手机号</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="edit_usertel" placeholder="手机号" name="usertel">
 						</div>
-						<div class="form-group">
-							<label for="edit_phone" class="col-sm-2 control-label">固定电话</label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" id="edit_phone" placeholder="固定电话" name="cust_phone">
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="edit_mobile" class="col-sm-2 control-label">移动电话</label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" id="edit_mobile" placeholder="移动电话" name="cust_mobile">
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="edit_zipcode" class="col-sm-2 control-label">邮政编码</label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" id="edit_zipcode" placeholder="邮政编码" name="cust_zipcode">
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="edit_address" class="col-sm-2 control-label">联系地址</label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" id="edit_address" placeholder="联系地址" name="cust_address">
-							</div>
-						</div>
+					</div>
 					</form>
 				</div>
 				<div class="modal-footer">
@@ -378,25 +342,19 @@
 		function editCustomer(id) {
 			$.ajax({
 				type:"get",
-				url:"<%=basePath%>customer/edit.action",
+				url:"<%=basePath%>customer/edit.html",
 				data:{"id":id},
-				success:function(data) {  
-					$("#edit_cust_id").val(data.cust_id);
-					$("#edit_customerName").val(data.cust_name);
-					$("#edit_customerFrom").val(data.cust_source)
-					$("#edit_custIndustry").val(data.cust_industry)
-					$("#edit_custLevel").val(data.cust_level)
-					$("#edit_linkMan").val(data.cust_linkman);
-					$("#edit_phone").val(data.cust_phone);
-					$("#edit_mobile").val(data.cust_mobile);
-					$("#edit_zipcode").val(data.cust_zipcode);
-					$("#edit_address").val(data.cust_address);
-					
+				success:function(data) {
+                    $("#edit_userid").val(data.userid);
+					$("#edit_username").val(data.username);
+					$("#edit_usergender").val(data.usergender)
+					$("#edit_useraddress").val(data.useraddress)
+					$("#edit_usertel").val(data.usertel)
 				}
 			});
 		}
 		function updateCustomer() {
-			$.post("<%=basePath%>customer/update.action",$("#edit_customer_form").serialize(),function(data){
+			$.post("<%=basePath%>customer/update.action",$("#edit_userid").serialize(),function(data){
 				alert("客户信息更新成功！");
 				window.location.reload();
 			});
