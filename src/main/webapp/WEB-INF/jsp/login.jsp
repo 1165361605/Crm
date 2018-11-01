@@ -49,21 +49,21 @@
 
         //调ajax
         $.ajax({
+
             url:"selectusername.html",
             data:{"u":uid},
             type:"POST",
-            dataType:"TEXT",
+            dataType:"JSON",
             success: function(data){
-                var bl = data.resultMap;
-                if(bl)
-                {
-                    $("#ts").html("该应户名不存在");
-                    $("#ts").css("color","red");
-                }
-                else
+                if(data)
                 {
                     $("#ts").html("欢迎您"+uid+",请输入密码！");
                     $("#ts").css("color","green");
+                }
+                else
+                {
+                    $("#ts").html("该应户名不存在");
+                    $("#ts").css("color","red");
                 }
             }
 

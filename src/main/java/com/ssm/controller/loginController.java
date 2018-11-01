@@ -65,7 +65,7 @@ public class loginController {
         boolean isExist = (i > 0 ? true:false);
         //  System.out.println(u);
         System.out.println(i);
-        String result = "isExist:"+isExist;
-        return result;
+        System.out.println(isExist);
+        return isExist+"";
     }
 }
