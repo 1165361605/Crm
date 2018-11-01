@@ -23,7 +23,7 @@ public class loginController {
         boolean b = loginService.login(admin);
         Integer usertype = admin.getUsertype();
         if (b)
-            if (usertype==0) return "redirect:/admin" ;//重定向登陆成功界面,重定向到管理员页面
+            if (usertype==0) return "redirect:/index/customer" ;//重定向登陆成功界面,重定向到管理员页面
             if (usertype==1) return "redirect:/register" ;//重定向登陆成功界面,重定向到管理员页面
         else {
             model.addAttribute("error","登录失败！");
