@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://"
@@ -14,6 +15,9 @@
     <script src="/bootstrap/js/jquery-3.3.1.min.js"></script>
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
     <script src="/bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <base href="<%=basePath%>">
 
     <title>登录</title>
@@ -39,6 +43,35 @@
         }
         return true;
     }
+    function onbulrname(){//blur表示失去焦点时触发
+        //取用户名
+        var uid = document.getElementById("username").value;
+
+        //调ajax
+        $.ajax({
+            url:"selectusername.html",
+            data:{"u":uid},
+            type:"POST",
+            dataType:"TEXT",
+            success: function(data){
+                var bl = data.resultMap;
+                if(bl)
+                {
+                    $("#ts").html("该应户名不存在");
+                    $("#ts").css("color","red");
+                }
+                else
+                {
+                    $("#ts").html("欢迎您"+uid+",请输入密码！");
+                    $("#ts").css("color","green");
+                }
+            }
+
+        });
+
+    }
+
+
 
 </script>
 
@@ -77,7 +110,7 @@
         max-width: 100%;
     }
 </style>
-<body>
+<body >
 
 <form class="form-horizontal" role="form" action="login/check.html" method="post" >
     <div class="mycenter">
@@ -86,7 +119,7 @@
             <h2 style=" color: white">客户管理系统</h2>
             </div>
         <div class="col-sm-12 ">
-            <input type="text" class="form-control" name="username" id="username" placeholder="请输入用户名">
+            <input type="text" class="form-control" name="username" id="username" placeholder="请输入用户名" onblur="onbulrname()" ><em id="ts"></em>
         </div>
     </div>
         <div class="col-sm-12">
@@ -118,6 +151,13 @@
 
     </div>
 </form>
+<c:if test="${iserror!=null}">
+
+       <script>
+           alert("登录失败");
+       </script>
+
+</c:if>
 
 
 </body>
