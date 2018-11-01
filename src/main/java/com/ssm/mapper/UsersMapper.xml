@@ -215,8 +215,6 @@
     where UserID = #{userid,jdbcType=INTEGER}
   </update>
 
-
-
   <!-- //总条数 -->
   <!-- public Integer customerCountByQueryVo(QueryVo vo); private String custName;
       private String custSource; private String custIndustry; private String custLevel; -->

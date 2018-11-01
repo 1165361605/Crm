@@ -24,29 +24,6 @@ public class UsersServiceImpl implements UsersService {
         return list;
     }
 
-    @Override
-    //通过id查询用户信息
-    public Users selectUserById(Integer id) {
-        return mapper.selectByPrimaryKey(id);
-    }
-
-    //通过用户名查询用户信息
-//    @Override
-//    public List<Users> selectUserByUserName(String UserName) {
-//        //获取UsersExample对象
-//        UsersExample example = new UsersExample();
-//        UsersExample.Criteria criteria = example.createCriteria();
-//        //设置查询信息
-//        criteria.andUsernameEqualTo(UserName);
-//        //执行查询
-//        List<Users> list = mapper.selectByExample(example);
-//        if (list == null){
-//            return null;
-//        }
-//        //返回
-//        return list;
-//    }
-
     // 通过2个条件 查询分页对象
     @Override
     public Page<Users> selectPageByQueryVo(QueryVo vo) {
@@ -54,8 +31,6 @@ public class UsersServiceImpl implements UsersService {
         //每页数
         page.setSize(10);
         vo.setSize(10);
-
-//===================================================================================================================
         /* 使用页面查询功能是启用 */
         if (null != vo) {//查询条件和页数不为空时进入
             // 判断当前页
@@ -75,10 +50,16 @@ public class UsersServiceImpl implements UsersService {
                      vo.setUsergender("女");
                  }
             }
-//===================================================================================================================
             page.setTotal(mapper.customerCountByQueryVo(vo));//总条数
             page.setRows(mapper.selectCustomerListByQueryVo(vo));//所有结果
         }
         return page;
     }
+
+    @Override
+    //通过id查询用户信息
+    public Users selectUserById(Integer id) {
+        return mapper.selectByPrimaryKey(id);
+    }
+
 }

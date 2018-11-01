@@ -9,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-
 @Controller
 public class IndexController {
     @Autowired
@@ -17,7 +16,7 @@ public class IndexController {
     /*
     * 跳转首页:并显示所有用户信息
     * 查询：根据用户名。性别查询用户
-    * */
+    */
     @RequestMapping(value = "/customer/selectlist")
     private String selectUsersByNmae(QueryVo vo,Model model){
         //通过四个条件  查询分页对象

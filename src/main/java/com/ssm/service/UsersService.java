@@ -11,8 +11,6 @@ public interface UsersService {
     List<Users> selectUserList();
     //通过id查询客户
     Users selectUserById(Integer id);
-    //通过姓名查询
-//    List<Users> selectUserByUserName(String UserName);
-
+    //通过姓名、性别查询
     Page<Users> selectPageByQueryVo(QueryVo vo );
 }
