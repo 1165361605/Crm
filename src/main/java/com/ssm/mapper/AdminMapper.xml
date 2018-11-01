@@ -81,9 +81,13 @@
       order by ${orderByClause}
     </if>
   </select>
+
   <select id="selectLogin" parameterType="com.ssm.pojo.Admin" resultType="BaseResultMap">
-    select * from admin where username = #{username} and userpw = #{userpw} and usertype = #{usertype}
+    select
+    <include refid="Base_Column_List" />
+    from admin where username = #{username} and userpw = #{userpw} and usertype = #{usertype}
   </select>
+
   <delete id="deleteByExample" parameterType="com.ssm.pojo.AdminExample" >
     delete from admin
     <if test="_parameter != null" >

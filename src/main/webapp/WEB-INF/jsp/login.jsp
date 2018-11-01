@@ -79,7 +79,7 @@
 </style>
 <body>
 
-<form class="form-horizontal" role="form" action="login/check" method="post" >
+<form class="form-horizontal" role="form" action="login/check.html" method="post" >
     <div class="mycenter">
         <div class="mysign">
             <div class="col-lg-11 text-center text-info" >
