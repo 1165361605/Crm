@@ -4,7 +4,7 @@ public class Admin {
     private Integer usertype;
 
     private String username;
-
+    //密码
     private String userpw;
 
     public Integer getUsertype() {

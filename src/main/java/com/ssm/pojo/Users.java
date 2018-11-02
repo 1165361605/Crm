@@ -4,11 +4,11 @@ public class Users {
     private Integer userid;
 
     private String username;
-
+    //性别
     private String usergender;
-
+    //地址
     private String useraddress;
-
+    //手机号
     private String usertel;
 
     public Integer getUserid() {

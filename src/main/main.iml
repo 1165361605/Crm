@@ -11,6 +11,16 @@
         </webroots>
       </configuration>
     </facet>
+    <facet type="Spring" name="Spring">
+      <configuration>
+        <fileset id="fileset" name="ApplicationContext Service" removed="false">
+          <file>file://$MODULE_DIR$/resources/spring/applicationContext-service.xml</file>
+          <file>file://$MODULE_DIR$/resources/spring/applicationContext-dao.xml</file>
+          <file>file://$MODULE_DIR$/resources/spring/applicationContext-trans.xml</file>
+          <file>file://$MODULE_DIR$/resources/spring/Springmvc.xml</file>
+        </fileset>
+      </configuration>
+    </facet>
   </component>
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
@@ -19,5 +29,8 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-context:4.2.4.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-beans:4.2.4.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-web:4.2.4.RELEASE" level="project" />
   </component>
 </module>

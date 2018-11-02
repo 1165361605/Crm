@@ -214,4 +214,35 @@
       UserTel = #{usertel,jdbcType=VARCHAR}
     where UserID = #{userid,jdbcType=INTEGER}
   </update>
+
+  <!-- //总条数 -->
+  <!-- public Integer customerCountByQueryVo(QueryVo vo); private String custName;
+      private String custSource; private String custIndustry; private String custLevel; -->
+  <select id="customerCountByQueryVo" parameterType="QueryVo"
+          resultType="Integer">
+    select count(1) from users
+    <where>
+      <if test="username != null and username != ''">
+        UserName like "%"#{username}"%"
+      </if>
+      <if test="usergender != null and usergender != ''">
+        and UserGender = #{usergender}
+      </if>
+    </where>
+  </select>
+  <!-- //结果集 -->
+  <!-- public List<Customer> selectCustomerListByQueryVo(QueryVo vo); -->
+  <select id="selectCustomerListByQueryVo" parameterType="QueryVo"
+          resultType="Users">
+    select * from users
+    <where>
+      <if test="username != null and username != ''">
+        UserName like "%"#{username}"%"
+      </if>
+      <if test="usergender != null and usergender != ''">
+        and UserGender = #{usergender}
+      </if>
+    </where>
+    limit #{startRow},#{size}
+  </select>
 </mapper>
