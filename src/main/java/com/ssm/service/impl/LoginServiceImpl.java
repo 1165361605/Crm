@@ -32,6 +32,9 @@ public class LoginServiceImpl implements LoginService {
             username.setMaxAge(60*60*24*7);
             userpassword.setMaxAge(60*60*24*7);
             type.setMaxAge(60*60*24*7);
+            username.setPath("/");
+            userpassword.setPath("/");
+            type.setPath("/");
             response.addCookie(username);
             response.addCookie(userpassword);
             response.addCookie(type);
