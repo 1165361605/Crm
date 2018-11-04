@@ -39,7 +39,7 @@ public class LoginServiceImpl implements LoginService {
             response.addCookie(userpassword);
             response.addCookie(type);
             if (admin.getUsertype() == 0)
-                return "redirect:/index/customer.html";//重定向登陆成功界面,重定向到管理员页面
+                return "redirect:/customer/selectlist.html";//重定向登陆成功界面,重定向到管理员页面
             else
                 return "";//重定向登陆成功界面,重定向到客户页面
 
